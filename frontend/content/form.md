@@ -3,7 +3,7 @@ title: "Form"
 draft: false
 ---
 
-<form id="submissionForm" action="http://localhost:5000/submit" method="POST">
+<form id="submissionForm" action="http://127.0.0.1:5000/submit" method="POST">
   <label for="title">Title:</label>
   <input type="text" id="title" name="title" required>
   <br>

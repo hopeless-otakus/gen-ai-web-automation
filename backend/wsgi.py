@@ -13,7 +13,7 @@ def hello_world():
 def submit():
     title = request.form['title']
     link = request.form['link']
-    image_url = request.fomr['image_url']
+    image_url = request.form['image_url']
 
     print(f'Title: {title}, Image URL: {image_url}, Link: {link}')
     return jsonify({"message": "Form submitted successfully!"}), 200
