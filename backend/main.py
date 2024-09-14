@@ -7,7 +7,6 @@ def getPath(field):
 
   return False
 
-
 class ContentManager():
   def __init__ (self, field, data):
     self.field = field

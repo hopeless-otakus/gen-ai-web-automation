@@ -3,40 +3,59 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
-
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 import axios from './axios';
 
 const Form = () => {
   const [formData, setFormData] = useState({
     title: '',
     link: '',
-    image: null,
+    image: '',
+    date: '',
+    time: '',
+    tags: '',
+    publisher: '',
+    field: 'news'
   });
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: files ? files[0] : value,
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
     const data = new FormData();
-    data.append('title', formData.title);
-    data.append('link', formData.link);
-    if (formData.image) {
-      data.append('image', formData.image);
-    }
-
+    Object.keys(formData).forEach((key) => {
+      if (formData[key]) {
+        data.append(key, formData[key]);
+      }
+    });
+    
     try {
-      const response = await axios.post('/submit', data);
+      const response = await axios.post('/submit', data, {
+       headers: {
+          "Content-Type": "multipart/form-data", // Correct content type for FormData
+        }, 
+      });
 
       if (response.status === 200) {
         console.log('Form submitted successfully');
-        setFormData({ title: '', link: '', image: null });
+        setFormData({
+          title: '',
+          link: '',
+          image: '',
+          date: '',
+          time: '',
+          tags: '',
+          publisher: '',
+          field: 'news' // Reset field to default value
+        });
       } else {
         console.error('Failed to submit the form');
       }
@@ -52,29 +71,29 @@ const Form = () => {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        backgroundColor: '#f5f5f5', // Light background for contrast
+        backgroundColor: '#f5f5f5',
       }}
     >
       <Paper
         elevation={4}
         sx={{
-          p: 4, // Padding inside the form
-          width: '400px', // Adjust the width as needed
+          p: 4,
+          width: '400px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          borderRadius: 2, // Rounded corners
-          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', // Subtle shadow effect
+          borderRadius: 2,
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)',
         }}
       >
         <Box
           component="form"
           sx={{
-            '& .MuiTextField-root': { m: 2, width: '100%' }, // Larger inputs
+            '& .MuiTextField-root': { m: 2, width: '100%' },
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '100%', // Make inputs take full width
+            width: '100%',
           }}
           noValidate
           autoComplete="off"
@@ -97,11 +116,52 @@ const Form = () => {
             required
           />
           <TextField
-            type="file"
+            label="Image URL"
             variant="outlined"
             name="image"
+            value={formData.image}
             onChange={handleChange}
           />
+          <TextField
+            label="Date"
+            variant="outlined"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Time"
+            variant="outlined"
+            name="time"
+            value={formData.time}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Tags (comma separated)"
+            variant="outlined"
+            name="tags"
+            value={formData.tags}
+            onChange={handleChange}
+          />
+          <TextField
+            label="Publisher"
+            variant="outlined"
+            name="publisher"
+            value={formData.publisher}
+            onChange={handleChange}
+          />
+          <Select
+            label="Field"
+            name="field"
+            value={formData.field}
+            onChange={handleChange}
+            variant="outlined"
+            sx={{ m: 2, width: '100%' }}
+          >
+            <MenuItem value="news">News</MenuItem>
+            <MenuItem value="events">Events</MenuItem>
+            {/* Add more options as needed */}
+          </Select>
           <Button variant="contained" color="primary" type="submit" sx={{ mt: 3 }}>
             Submit
           </Button>
