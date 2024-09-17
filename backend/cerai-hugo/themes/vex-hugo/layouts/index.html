@@ -1,0 +1,28 @@
+
+
+{{ define "main" }}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HW4VEP0VKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HW4VEP0VKF');
+</script>
+
+{{- partial "carousel.html" .}}
+
+  {{- partial "banner.html" . }}
+
+  {{- partial "features.html" . }}
+
+  {{- partial "promo.html" . }}
+
+  {{- partial "news-home.html" . }}
+
+  {{- partial "activities.html" . }}
+
+
+{{ end }}

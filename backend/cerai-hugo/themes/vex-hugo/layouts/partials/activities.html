@@ -1,0 +1,39 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+
+{{ if $data.homepage.activities.enable }}
+<style>
+  .activity-link
+  {
+    text-decoration:none;
+    color: #3b4045;
+    font-size: 18px;
+  line-height: 25px;
+  }
+  .activity-link:hover {
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
+<section class="testimonials section" id="testimonial">
+  <div class="container">
+    {{ with $data.homepage.activities }}
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="heading">
+          <h2>{{ .title | markdownify }}</h2>
+        </div>
+      </div>
+      {{ range .activity_item }}
+      <div class="col-lg-4 col-sm-6 mb-5 mb-lg-0 text-center">
+        <img class="mb-40" width="90%" height="75%" src="{{.image}}" />
+        <p>
+          <a  class="activity-link" href="{{ .link }}">{{ .event_name }}</a>
+        </p>
+        
+      </div>
+      {{ end }}
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

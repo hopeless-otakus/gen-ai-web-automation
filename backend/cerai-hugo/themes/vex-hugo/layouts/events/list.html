@@ -1,0 +1,335 @@
+{{ define "main" }}
+<style>
+  @media only screen and (min-width: 768px) {
+  .mobile-link {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1500px) {
+  .tablet-row {
+    padding-left: 25% !important;
+  }
+  .mobile-heading {
+    font-size: 0.80rem !important;
+  }
+
+  .timeline-block:nth-child(2n) .mobile-heading {
+    font-size: 0.80rem !important;
+  }
+  .timeline-block:nth-child(2n) .inner-box .inner {
+  margin-right: 12.5rem !important;
+}
+
+/* General styles for all .timeline-block elements */
+.timeline-block:not(:nth-child(2n)) .inner-box .inner {
+  margin-left: 13.5rem !important;
+}
+  .mobile-icon {
+    display: none;
+    margin: 0px !important;
+  }
+
+  .inner-mobile {
+    float: none !important;
+    width: 500px !important;
+    text-align: left;
+  }
+
+  .timeline-block:nth-child(2n) .inner-mobile {
+    padding-left: 10px;
+  }
+
+  /* Hide the .time-box if .time span is empty */
+  .time-box .time:empty,
+  .timeline-block:nth-child(2n) .time:empty {
+    display: none;
+  }
+
+  .time-box .time:empty + i,
+  .timeline-block:nth-child(2n) .time:empty + i {
+    display: none;
+  }
+
+  .timeline-block:nth-child(2n) .time:empty ~ .time-box {
+    display: none;
+  }
+
+  /* Hide the .venue-box if .map span is empty */
+  .venue-box .map:empty,
+  .timeline-block:nth-child(2n) .map:empty {
+    display: none;
+  }
+
+  .venue-box .map:empty + i,
+  .timeline-block:nth-child(2n) .map:empty + i {
+    display: none;
+  }
+
+  .timeline-block:nth-child(2n) .map:empty ~ .venue-box {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 900px) {
+  .tablet-row {
+    padding-left: 10% !important;
+  }
+  .mobile-heading {
+    font-size: 0.80rem !important;
+  }
+
+  .timeline-block:nth-child(2n) .mobile-heading {
+    font-size: 0.80rem !important;
+  }
+  .timeline-block:nth-child(2n) .inner-box .inner {
+  margin-right: 12.5rem !important;
+}
+
+/* General styles for all .timeline-block elements */
+.timeline-block:not(:nth-child(2n)) .inner-box .inner {
+  margin-left: 13.5rem !important;
+}
+  .mobile-icon {
+    display: none;
+    margin: 0px !important;
+  }
+
+  .inner-mobile {
+    float: none !important;
+    width: 500px !important;
+    text-align: left;
+  }
+
+  .timeline-block:nth-child(2n) .inner-mobile {
+    padding-left: 10px;
+  }
+
+  /* Hide the .time-box if .time span is empty */
+  .time-box .time:empty,
+  .timeline-block:nth-child(2n) .time:empty {
+    display: none;
+  }
+
+  .time-box .time:empty + i,
+  .timeline-block:nth-child(2n) .time:empty + i {
+    display: none;
+  }
+
+  .timeline-block:nth-child(2n) .time:empty ~ .time-box {
+    display: none;
+  }
+
+  /* Hide the .venue-box if .map span is empty */
+  .venue-box .map:empty,
+  .timeline-block:nth-child(2n) .map:empty {
+    display: none;
+  }
+
+  .venue-box .map:empty + i,
+  .timeline-block:nth-child(2n) .map:empty + i {
+    display: none;
+  }
+
+  .timeline-block:nth-child(2n) .map:empty ~ .venue-box {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .mobile-heading {
+    font-size: 0.80rem !important;
+  }
+
+  .timeline-block:nth-child(2n) .mobile-heading {
+    font-size: 0.80rem !important;
+  }
+  .timeline-block:nth-child(2n) .inner-box .inner {
+  margin-right: 12.5rem !important;
+}
+
+/* General styles for all .timeline-block elements */
+.timeline-block:not(:nth-child(2n)) .inner-box .inner {
+  margin-left: 13.5rem !important;
+}
+  .mobile-icon {
+    display: none;
+    margin: 0px !important;
+  }
+
+  .inner-mobile {
+    float: none !important;
+    width: 95% !important;
+    text-align: left;
+  }
+
+  .timeline-block:nth-child(2n) .inner-mobile {
+    padding-left: 10px;
+  }
+
+  .desktop-btn {
+    display: none;
+  }
+
+  /* Hide the .time-box if .time span is empty */
+  .time-box .time:empty,
+  .timeline-block:nth-child(2n) .time:empty {
+    display: none;
+  }
+
+  .time-box .time:empty + i,
+  .timeline-block:nth-child(2n) .time:empty + i {
+    display: none;
+  }
+
+  .timeline-block:nth-child(2n) .time:empty ~ .time-box {
+    display: none;
+  }
+
+  /* Hide the .venue-box if .map span is empty */
+  .venue-box .map:empty,
+  .timeline-block:nth-child(2n) .map:empty {
+    display: none;
+  }
+
+  .venue-box .map:empty + i,
+  .timeline-block:nth-child(2n) .map:empty + i {
+    display: none;
+  }
+
+  .timeline-block:nth-child(2n) .map:empty ~ .venue-box {
+    display: none;
+  }
+}
+  
+</style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HW4VEP0VKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HW4VEP0VKF');
+</script>
+
+<section class="section others-section">
+  <div class="container" style="z-index:0!important;">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading">
+          <h2>Events</h2>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row justify-content-center tablet-row">
+    <div class="col-md-10 u-margin-bottom-small">
+      {{ $all_pages := where .Site.RegularPages "Section" "in" (slice "events")}}
+      {{ $years := slice}}
+      {{ $years_tags := dict}}
+      {{range $all_pages.GroupByDate "2006"}}
+        {{ $years = $years | append .Key}}
+        {{ $category_tags := dict}}
+        {{range .Pages.GroupBy "Section"}}
+          {{$temp_tags := slice}}
+          {{range .Pages}}
+            {{ range .Params.tags}}
+              {{ $temp_tags = $temp_tags | uniq | append ( . ) }}
+            {{end}}
+          {{end}}
+          {{$category_tags = merge $category_tags (dict .Key $temp_tags)}}
+        {{end}}
+        {{$years_tags = merge $years_tags (dict .Key $category_tags)}}
+      {{end}}
+      {{$checked := ""}}
+      <ul class="nav nav-pills mb-4" id="year-tab" role="tablist">
+        {{ range $key,$value := ($years | uniq ) }}
+          {{if not $key}}
+            {{$checked = "active"}}
+          {{else}}
+           {{$checked = ""}}
+          {{end}}
+        {{end}}
+      </ul>
+      <div class="tab-content" id="yeartabcontent">
+        {{ range $key,$yearValue := ($years | uniq ) }}
+          {{if not $key}}
+            {{$checked = "active show"}}
+          {{else}}
+            {{$checked = ""}}
+          {{end}}
+          <div class="tab-pane {{$checked}}" id="year-{{$yearValue}}" role="tabpanel">
+        </div>
+        {{end}}
+      </div>
+    </div>
+    <div class="col-md-10 u-margin-bottom-big">
+      <div class="timeline filter vertical">
+        {{ range $all_pages.ByDate.Reverse }}
+          {{$class := ""}}
+          {{if eq .Section "events"}}
+          {{$class = "timeline-block--color1"}}
+          {{end}}
+          {{$groups := slice}}
+          {{range .Params.tags}}
+            {{$groups = $groups | append ( . )}}
+          {{end}}
+          <div class="timeline-block filter-item {{$class}} {{ range $groups }}{{. | urlize}} {{end}} {{.Section}} {{ dateFormat `2006` .Date }}">
+            <div class="inner-box inner-mobile">
+              <div class="inner">
+                <div class="date mobile-date">
+                  {{ dateFormat "Jan 2" .Date }}<br>
+                  {{ dateFormat "2006" .Date }}<br>
+                </div>
+                {{if eq .Section "events"}}
+                  {{$link := .Permalink}}
+                  {{with .Params.link}}
+                    {{$link = .}}
+                  {{end}}
+                  <h4 class="mobile-heading"><a href="{{$link}}">{{.Title}}</a></h4>
+                  <div class="icon">
+                    {{ if .Params.date }}
+                    {{$date := .Date}}
+                    {{ with .Params.dateTo }}
+                      <i class="fas fa-calendar-week"></i><span>{{ dateFormat "January 2" $date }} to {{ dateFormat "January 2" . }}</span>
+                    {{ end }}
+                  {{ end }}
+                    {{if .Params.time }}
+                    <div class="time-box">
+                      <i class="far fa-clock"></i><span class="time">{{.Params.time}}</span>
+                    </div>
+                    {{ end }}
+                  </div>
+                  {{ if .Params.venue }}
+                  <div class="venue-box">
+                    <div class="icon">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span class="map">{{.Params.venue}}</span>
+                    </div>
+                  </div>
+                  {{ end }}
+                  <div class="btn-box desktop-btn">
+                    <a href="{{$link}}">Read More</a>
+                  </div>
+                  <div class="mobile-link">
+                  <a href="{{$link}}">Read More</a>
+                  </div>
+                {{end}}
+              </div>
+            </div>
+          </div>
+        {{end}}
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+
+
+
+

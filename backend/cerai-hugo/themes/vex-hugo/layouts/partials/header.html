@@ -1,0 +1,497 @@
+{{ $current_page := . }}
+<style>
+    
+    #ticker {
+        overflow: hidden;
+        height: 40px; 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        
+    }
+    .ticker-wrapper {
+        width: 100%; 
+        overflow: hidden; 
+        position:relative;
+    }
+    .ticker-list {
+        list-style-type: none;
+        padding-left: 0;
+        display: flex; 
+        margin: 0; 
+        justify-content: center; 
+        animation: ticker 15s infinite linear; 
+    }
+    .ticker-item {
+        margin-right: 10px; 
+        font-size: 120%;
+        font-weight: bold;
+        white-space: nowrap;
+        text-align: center;
+    }
+    .ticker-item a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .ticker-item a:hover {
+        color: blue; 
+    }
+
+.ticker-list {
+    white-space: nowrap;
+    animation: ticker-animation linear infinite;
+}
+
+@keyframes ticker-animation {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+.ticker-contain {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #f4f4f4; 
+    z-index:0;
+}
+
+.left-bg {
+    background-color: #d7d7d7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 20%; 
+    z-index: 1; 
+    padding-right:50%;
+}
+
+.container {
+    position: relative;
+    z-index: 1; 
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4; 
+}
+
+.announcement-container {
+    position: relative;
+    background-color: #d7d7d7;
+    padding: 1% 6%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    display: inline-block;
+}
+
+.announcement-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    border-width: 30px 0 30px 35px;
+    border-style: solid;
+    border-color: #f4f4f4 #f4f4f4 #f4f4f4 #d7d7d7;
+    z-index: 1;
+}
+
+.ticker-wrapper {
+    flex-grow: 1;
+    background-color: #f4f4f4; 
+}
+
+.ticker-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.separator {
+    display: inline-block;
+    color: #0074ba;
+}
+.announcement-text
+{
+    font-weight:bold;
+    font-size:120%;
+    margin-top:10%;
+    margin-left:-10%;
+}
+@media only screen and (max-width: 600px) {
+    .announcement-container {
+        display: none;
+    }
+    .left-bg{
+        display:none;
+    }
+}
+    *
+    {
+        font-family: 'Titillium Web', sans-serif, Source Sans Pro, Helvetica Neue, Helvetica, Arial,sans-serif !important;
+    }
+
+
+
+
+  @media only screen and (min-width: 200px) and (max-width: 1200px) 
+  {
+
+    .logo-container
+    {
+        display: flex;
+
+    }
+    .logo-link
+    {
+        height: auto;
+        display: inline;
+        overflow: hidden;
+    }
+
+
+}
+@media only screen and (min-width: 200px) and (max-width: 798px)
+{
+    .navbutton
+    {
+        display: none;
+    }
+    .mobile-dropdown
+    {
+        border: none;
+        text-align: center;
+    }
+    .cerai-nav
+    {
+        display:flex;
+        justify-content:center;
+        text-align:center;
+    }
+    .mobile-dropdown
+    {
+        background-color:aliceblue;
+    }
+
+}
+@media only screen and (min-width: 799px) and (max-width: 1170px) 
+{
+    .mobilebutton
+    {
+        display: none;
+    }
+    .mobile-dropdown
+    {
+        border: none;
+        text-align: center;
+        background-color:aliceblue;
+    }
+
+}
+
+@media only screen and (min-width:1170px) and (max-width: 1500px)
+{
+    .navContain
+    {
+        width:100%;
+        display:flex;
+        justify-content:center;
+        text-align:center;
+    }
+    .logo-container{
+        width:100%;
+    }
+
+}
+.nav-item
+{
+    text-transform: uppercase;
+}
+.dropdown-item
+{
+    text-transform: capitalize;
+}
+
+
+body:not([data-current-page="index"]) .ticker-contain {
+    display: none;
+}
+
+body[data-current-page="index"] .breadcrumb-div {
+    display: none;
+}
+
+body[data-current-page="tags"] .breadcrumb-div {
+    display: none;
+}
+body:not([data-current-page="tags"]) .breadcrumb-tags-div {
+    display:none;
+}
+
+body[data-current-page=""]
+
+.breadcrumb
+{
+    background-color:transparent !important;
+}
+.breadcrumb-div 
+  {
+    background-color: #f4f4f4;
+    padding-top:0.5%;
+    position: relative;
+    z-index: 0 !important;
+
+  }
+
+  .breadcrumb-tags-div
+  {
+    background-color: #f4f4f4;
+    padding-top:0.5%;
+    position: relative;
+    z-index: 0 !important;
+
+  }
+  .breadcrumb-list {
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    display: flex; 
+    padding-bottom: 0.5%;
+    background-color: transparent !important;
+}
+
+.breadcrumb-item {
+    display: inline; 
+    margin-right: 10px; 
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.breadcrumb-item a {
+    text-decoration: none !important; 
+}
+.breadcrumb-contain
+{
+    position: relative;
+    padding: 1%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    display: inline-block;
+
+
+}
+@media only screen and (min-width:200px) and (max-width:692px)
+{
+    .breadcrumb-list .breadcrumb-tags-div {
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    display: flex; 
+    padding-bottom: 2%;
+}
+.breadcrumb-div
+  {
+    background-color: #f4f4f4;
+    padding-top:2%;
+
+  }
+  .breadcrumb-contain{
+    padding-left:10%;
+  }
+
+
+}
+
+
+</style>
+
+<!-- navigation -->
+<header class="bg-white" style="background-color:aliceblue!important;">
+  <div class="container navContain">
+    <nav class="navbar navbar-expand-lg navbar-light cerai-nav">
+        <div class="logo-container">
+            <img src="/images/wsai-iitm-cerai-logo.png" usemap="#image-map">
+            <map name="image-map">
+                <area target="" alt="cerai" title="cerai" href="/" coords="13,17,148,64" shape="rect">
+                <area target="" alt="wsai" title="wsai" href="https://dsai.iitm.ac.in/" coords="193,17,156,64" shape="rect">
+                <area target="" alt="iitm " title="iitm " href="https://www.iitm.ac.in/" coords="197,16,236,64" shape="rect">
+            </map>
+            <button class="mobilebutton navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span id ="nav-button" class="navbar-toggler-icon"></span>
+            </button>
+    </div>
+    <button class=" navbutton navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+    <span id ="nav-button" class="navbar-toggler-icon"></span>
+</button>
+    <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav ml-auto">
+            {{ range site.Menus.main }}
+                {{ if .HasChildren }}
+                    <li class="nav-item dropdown">
+                        {{ $drop_active := or (eq .Name $current_page ) }}
+                        <a href="#" class="nav-link {{ if $drop_active }}active{{ end }} dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                            {{- .Pre -}}<span>{{ .Name | safeHTML }}</span>{{- .Post -}}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu mobile-dropdown">
+                            {{ range .Children }}
+                                <li class="dropdown-item my-0 py-0 mx-0 px-0">
+                                    <a class="nav-link current" href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}>
+                                        {{- .Pre -}}<span>{{ .Name | safeHTML }}</span>{{- .Post -}}
+                                    </a>
+                                </li>
+                            {{ end }}
+                        </ul>
+                    </li>
+                {{ else }}
+                    <li class="nav-item">
+                        <a class="nav-link current" href="{{if .Pre}}{{site.BaseURL | relLangURL}}{{.Pre}}{{ .URL }}{{else}}{{.URL | absLangURL}}{{end}}">{{ .Name }}</a>
+                    </li>
+                {{ end }}
+            {{ end }}
+        </ul>
+    </div>
+    
+    </nav>
+   
+  </div>
+  <div class="ticker-contain">
+    <div class="left-bg"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <div id="ticker" class="flex-container">
+                    <div class="announcement-container">
+                        <p class="announcement-text">Announcements</p>
+                    </div>
+                    <div class="ticker-wrapper">
+                        <ul class="ticker-list">
+                            {{ $announcements := where .Site.RegularPages "Type" "announcements" | first 3 }}
+                            {{ range $index, $element := $announcements }}
+                                <li class="ticker-item">
+                                    <a href="{{ $element.Params.link }}">{{ $element.Params.title }}</a>
+                                </li>
+                                <span class="separator"> | &nbsp; </span>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="breadcrumb-tags-div">
+    <div class="container"> 
+        <div class="row">
+            <div class="col">
+                <div class="breadcrumb-contain">
+                    <nav aria-label="breadcrumb-nav">
+                        <ol class="breadcrumb-list breadcrumb">
+                            <li class="breadcrumb-item"><a href="/" style="text-decoration: none !important">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/projects" style="text-decoration: none !important">Projects</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="breadcrumb-div">
+    <div class="container"> 
+        <div class="row">
+            <div class="col">
+                <div class="breadcrumb-contain">
+                    <nav aria-label="breadcrumb-nav">
+                        <ol class="breadcrumb-list breadcrumb">
+                            <li class="breadcrumb-item"><a href="/" style="text-decoration: none !important">Home</a></li>
+                            {{ with .Parent }}
+                            {{ if ne .Title "Centre for Responsible AI" }}
+                            <li class="breadcrumb-item">
+                                <a href="{{ .Permalink }}" style="text-decoration: none !important">{{ .Title }} </a>
+                            </li>
+                            {{ end }}
+                            {{ end }}
+                            <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ 
+
+
+</header>
+<script>
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    var path = window.location.pathname;
+    if (path === "/" || path === "/index.html" || path === "") {
+        document.body.setAttribute('data-current-page', "index");
+    }
+
+    var pathParts = path.split('/').filter(function(part) { return part !== ""; });
+    if (pathParts.length > 0 && pathParts[0] === "tags") {
+        document.body.setAttribute('data-current-page', "tags");
+    }
+});
+
+    function getBrowser() {
+     const agent = navigator.userAgent.toLowerCase();
+     if (agent.indexOf('firefox') !== -1) {
+         return 'firefox';
+     } else {
+         return 'other';
+     }
+ }
+ 
+ function isMobile() {
+     return /Mobi|Android/i.test(navigator.userAgent);
+ }
+ 
+ function Marquee(tickerSelector) {
+     const browser = getBrowser();
+     const mobile = isMobile();
+     let speed;
+ 
+     if (mobile) {
+         speed = 70;
+     } else {
+         speed = 40;
+     }
+ 
+     const ticker = document.querySelector(tickerSelector);
+     const list = ticker.querySelector('.ticker-list');
+     const clone = document.createElement('ul');
+     
+     clone.classList.add('ticker-list');
+     clone.innerHTML = list.innerHTML; 
+ 
+     list.appendChild(clone); 
+ 
+     const contentWidth = list.scrollWidth / 2; 
+ 
+     list.style.animationDuration = `${contentWidth / speed}s`;
+ }
+ 
+ window.addEventListener('load', function() {
+     Marquee('#ticker'); 
+ });
+ </script>
+     
+<!-- /navigation -->

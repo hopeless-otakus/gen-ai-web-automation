@@ -1,0 +1,282 @@
+{{ define "main" }}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HW4VEP0VKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-HW4VEP0VKF');
+</script>
+
+<style>
+  .heading {
+    padding-bottom: 31px !important;
+  }
+  .card-item {
+    margin-right:1%;
+  
+}
+.navig {
+    border: none !important;
+    border-bottom:none !important;
+  }
+  .link-nav:active {
+    border:none !important;
+  }
+  .link-nav {
+    border:none !important;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1170px) {
+    .navnav {
+      text-align: center;
+      padding-bottom: 5%;
+    }
+    .tabrow
+    {
+      justify-content:center;
+    }
+    .navig
+    {
+      justify-content:center;
+    }
+  }
+  @media only screen and (min-width: 1170px) {
+    #myTabContent {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    #myTab {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    .navig {
+      border: none !important;
+      border-bottom: none !important;
+    }
+    .link-nav:active,
+    .link-nav {
+      border: none !important;
+    }
+  }
+  @media (max-width: 768px) {
+    .nav-tabs {
+      flex-wrap: wrap;
+      justify-content: space-around;
+      height: auto !important;
+    }
+    .nav-item {
+      width: 100% !important;
+    }
+    .nav-link {
+      padding: 10px 0 !important;
+      white-space: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      
+    }
+
+  }
+
+</style>
+
+<section class="section">
+  <div class="container" style="position:relative; z-index:0;">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="heading">
+            <h2>Resources</h2>
+          </div>
+        </div>
+      </div>
+      <ul class="nav nav-tabs navig" id="myTab" role="tablist">
+        <li class="nav-item navnav" role="presentation">
+          <a class="nav-link text-center link-nav active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+        </li>
+        <li class="nav-item navnav" role="presentation">
+          <a class="nav-link text-center link-nav" id="papers-tab" data-toggle="tab" href="#papers" role="tab" aria-controls="papers" aria-selected="false">Papers</a>
+        </li>
+        <li class="nav-item navnav" role="presentation">
+          <a class="nav-link text-center link-nav" id="dataset-tab" data-toggle="tab" href="#essays" role="tab" aria-controls="dataset" aria-selected="false">Essays</a>
+        </li>
+        <li class="nav-item navnav" role="presentation">
+          <a class="nav-link text-center link-nav" id="code-tab" data-toggle="tab" href="#code" role="tab" aria-controls="code" aria-selected="false">Code</a>
+        </li>
+        <li class="nav-item navnav" role="presentation">
+          <a class="nav-link text-center link-nav" id="video-tab" data-toggle="tab" href="#videos" role="tab" aria-controls="videos" aria-selected="false">Videos</a>
+        </li>
+        <li class="nav-item navnav" role="presentation">
+          <a class="nav-link text-center link-nav" id="presentation-tab" data-toggle="tab" href="#presentations" role="tab" aria-controls="presentations" aria-selected="false">Presentations</a>
+        </li>
+      </ul>
+      <br>
+      <br>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+          <div class="row tabrow">
+            {{ range (where .Site.RegularPages "Section" "resource-materials") }}
+            <div class="card mb-3 card-item" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="{{ .Params.image | absURL }}" class="card-img" alt="Card Image">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{.Params.title}}</h5>
+                    
+                    {{ if .Params.link }}
+                    <a href="{{ .Params.link }}" class="btn btn-primary">View</a>
+                    {{ else }}
+                    <a href="{{ .Permalink  }}" class="btn btn-primary">View</a>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        <div class="tab-pane fade" id="papers" role="tabpanel" aria-labelledby="papers-tab">
+          <div class="row" style=" display:flex; justify-content:center;">
+            {{ range (where .Site.RegularPages "Section" "resource-materials") }}
+            {{ if eq .Params.filter "papers" }}
+            <div class="card mb-3 card-item" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="{{ .Params.image | absURL }}" class="card-img" alt="Card Image">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{.Params.title}}</h5>
+                    
+                    {{ if .Params.link }}
+                    <a href="{{ .Params.link }}" class="btn btn-primary">View</a>
+                    {{ else }}
+                    <a href="{{ .Permalink  }}" class="btn btn-primary">View</a>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+        <div class="tab-pane fade" id="essays" role="tabpanel" aria-labelledby="essays-tab">
+          <div class="row" style=" display:flex; justify-content:center;">
+            {{ range (where .Site.RegularPages "Section" "resource-materials") }}
+            {{ if eq .Params.filter "essays" }}
+            <div class="card mb-3 card-item" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="{{ .Params.image | absURL }}" class="card-img" alt="Card Image">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{.Params.title}}</h5>
+                    
+                    {{ if .Params.link }}
+                    <a href="{{ .Params.link }}" class="btn btn-primary">View</a>
+                    {{ else }}
+                    <a href="{{ .Permalink  }}" class="btn btn-primary">View</a>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+              
+
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+        <div class="tab-pane fade" id="code" role="tabpanel" aria-labelledby="code-tab">
+          <div class="row" style=" display:flex; justify-content:center;">
+            {{ range (where .Site.RegularPages "Section" "resource-materials") }}
+            {{ if eq .Params.filter "code" }}
+            <div class="card mb-3 card-item" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="{{ .Params.image | absURL }}" class="card-img" alt="Card Image">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{.Params.title}}</h5>
+                    
+                    {{ if .Params.link }}
+                    <a href="{{ .Params.link }}" class="btn btn-primary">View</a>
+                    {{ else }}
+                    <a href="{{ .Permalink  }}" class="btn btn-primary">View</a>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+        <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="video-tab">
+          <div class="row" style=" display:flex; justify-content:center;">
+            {{ range (where .Site.RegularPages "Section" "resource-materials") }}
+            {{ if eq .Params.filter "videos" }}
+            <div class="card mb-3 card-item" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="{{ .Params.image | absURL }}" class="card-img" alt="Card Image">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{.Params.title}}</h5>
+                    
+                    {{ if .Params.link }}
+                    <a href="{{ .Params.link }}" class="btn btn-primary">View</a>
+                    {{ else }}
+                    <a href="{{ .Permalink  }}" class="btn btn-primary">View</a>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+        <div class="tab-pane fade" id="presentations" role="tabpanel" aria-labelledby="presentation-tab">
+          <div class="row" style=" display:flex; justify-content:center;">
+            {{ range (where .Site.RegularPages "Section" "resource-materials") }}
+            {{ if eq .Params.filter "presentations" }}
+            <div class="card mb-3 card-item" style="max-width: 540px;">
+              <div class="row no-gutters">
+                <div class="col-md-4">
+                  <img src="{{ .Params.image | absURL }}" class="card-img" alt="Card Image">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{.Params.title}}</h5>
+                    
+                    {{ if .Params.link }}
+                    <a href="{{ .Params.link }}" class="btn btn-primary">View</a>
+                    {{ else }}
+                    <a href="{{ .Permalink  }}" class="btn btn-primary">View</a>
+                    {{ end }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

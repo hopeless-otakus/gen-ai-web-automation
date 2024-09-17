@@ -1,0 +1,241 @@
+{{ define "main" }}
+<style>
+
+  @media only screen and (min-width: 750px) and (max-width: 1170px)
+  {
+
+.navnav
+{
+  width: 30%;
+  text-align:center;
+  padding-bottom:5%;
+}
+
+  }
+
+@media only screen and (min-width:1170px)
+{
+  .navnav
+{
+  width: 15%;
+}
+
+}
+#myTabContent {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+#myTab
+{
+  display: flex;
+    justify-content: center;
+    text-align: center;
+
+}
+.navig {
+    border: none !important;
+    border-bottom:none !important;
+  }
+  .link-nav:active {
+    border:none !important;
+  }
+  .link-nav {
+    border:none !important;
+  }
+  @media (max-width: 768px) {
+    .nav-tabs {
+      flex-wrap: wrap;
+      justify-content: space-around; /* Center tabs */
+      height: auto !important;
+    }
+    .nav-item
+    {
+      width: 100% !important;
+    }
+  
+    .nav-link {
+      padding: 10px 0 !important; 
+      white-space: normal !important; 
+      overflow: visible !important; 
+      text-overflow: clip !important; 
+    }
+  }
+  .people-img {
+    width: 50%;
+    height: 52%;
+}
+  </style>
+  
+
+<section class="section">
+  <div class="container" style="z-index:0!important;">
+
+    <div class="col-12 text-center mb-5">
+      <h1 class="font-weight-bold">{{.Title}}</h1>
+    </div>
+    <ul class="nav nav-tabs navig" id="myTab" role="tablist">
+      <li class="nav-item navnav" role="presentation">
+        <a class="nav-link active text-center link-nav" id="pis-tab" data-toggle="tab" href="#pis" role="tab" aria-controls="pis" aria-selected="true">Principal Investigators</a>
+      </li>
+      <li class="nav-item navnav" role="presentation">
+        <a class="nav-link  text-center link-nav" id="council-tab" data-toggle="tab" href="#council" role="tab" aria-controls="council" aria-selected="false">Governing Council</a>
+      </li>
+      <li class="nav-item navnav" role="presentation">
+        <a class="nav-link  text-center link-nav" id="advisor-tab" data-toggle="tab" href="#advisor" role="tab" aria-controls="advisor" aria-selected="false">Scientific Advisory Board</a>
+      </li>
+
+      <li class="nav-item navnav" role="presentation">
+        <a class="nav-link  text-center link-nav" id="researcher-tab" data-toggle="tab" href="#researcher" role="tab" aria-controls="researcher" aria-selected="false">Researchers</a>
+      </li>
+
+      <li class="nav-item navnav" role="presentation">
+        <a class="nav-link  text-center link-nav" id="staff-tab" data-toggle="tab" href="#staff" role="tab" aria-controls="staff" aria-selected="false">Staff</a>
+      </li>
+
+      <li class="nav-item navnav" role="presentation">
+        <a class="nav-link  text-center link-nav" id="collab-tab" data-toggle="tab" href="#collab" role="tab" aria-controls="collab" aria-selected="false">Fellows</a>
+      </li>
+    </ul>
+
+  <br>
+  <br>
+
+      <div class="tab-content" id="myTabContent">
+        
+
+        <div class="tab-pane fade show active" id="pis" role="tabpanel" aria-labelledby="pis-tab">
+          {{ range (where .Site.RegularPages "Section" "people") }}
+          {{ if eq .Params.filter "head" }}
+          <div class="people mt-5">
+            <div>
+              <a href="{{.Permalink}}" class="people-img"><img class="people-img" src="{{ .Params.image }}" alt="{{.Title}}"></a>
+            </div>
+            <div>
+            <h4 class="mb-2"><a href="{{.Permalink}}" class="link-title">{{.Title}}</a></h4>
+            <!-- <p style="margin-top: 0px;"><strong>Head of the Centre</strong></p> -->
+            <p>{{ .Params.designation | markdownify }}<br>{{.Params.affiliation | markdownify}}</p>
+            </div>
+          </div>
+          {{ end }}
+          {{ if eq .Params.filter "core" }}
+          <div class="people mt-5">
+            <div>
+              <a href="{{.Permalink}}" class="people-img"><img class="people-img" src="{{ .Params.image }}" alt="{{.Title}}"></a>
+
+            </div>
+            <div>
+            <h4 class="mb-2"><a href="{{.Permalink}}" class="link-title">{{.Title}}</a></h4>
+            <p>{{ .Params.designation | markdownify }}<br>{{.Params.affiliation | markdownify}}</p>
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+
+        <div class="tab-pane fade" id="council" role="tabpanel" aria-labelledby="council-tab">
+          {{ range (where .Site.RegularPages "Section" "people") }}
+          {{ if eq .Params.filter "council" }}
+          <div class="people mt-5">
+            <div>
+              <a href="{{.Permalink}}" class="people-img"><img class="people-img" src="{{ .Params.image }}" alt="{{.Title}}"></a>
+
+            </div>
+            <div>
+            <h4 class="mb-2"><a href="{{.Permalink}}" class="link-title">{{.Title}}</a></h4>
+            <p>{{.Params.designation | markdownify}}<br>{{.Params.affiliation | markdownify}}</p>
+            </div>
+          </div>
+          {{ end }}
+          {{ if eq .Params.filter2 "council" }}
+          <div class="people mt-5">
+            <div>
+              <a href="{{.Permalink}}" class="people-img"><img class="people-img" src="{{ .Params.image }}" alt="{{.Title}}"></a>
+
+            </div>
+            <div>
+            <h4 class="mb-2"><a href="{{.Permalink}}" class="link-title">{{.Title}}</a></h4>
+            <p><b>Member-Secretary</b><br>Head, CeRAI</p>
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+
+        <div class="tab-pane fade" id="advisor" role="tabpanel" aria-labelledby="advisor-tab">
+          {{ range (where .Site.RegularPages "Section" "people") }}
+          {{ if eq .Params.filter "advisor" }}
+          <div class="people mt-5">
+            <div>
+              <a href="{{.Permalink}}" class="people-img"><img class="people-img" src="{{ .Params.image }}" alt="{{.Title}}"></a>
+
+            </div>
+            <div>
+            <h4 class="mb-2"><a href="{{.Permalink}}" class="link-title">{{.Title}}</a></h4>
+            <p>{{.Params.designation | markdownify}}<br>{{.Params.affiliation | markdownify}}</p>
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+
+
+        <div class="tab-pane fade" id="researcher" role="tabpanel" aria-labelledby="reseacher-tab">
+          {{ range (where .Site.RegularPages "Section" "people") }}
+          {{ if eq .Params.filter "researcher" }}
+          <div class="people mt-5">
+            <div>
+              <a href="{{.Permalink}}" class="people-img"><img class="people-img" src="{{ .Params.image }}" alt="{{.Title}}"></a>
+
+            </div>
+            <div>
+            <h4 class="mb-2"><a href="{{.Permalink}}" class="link-title">{{.Title}}</a></h4>
+            <p>{{.Params.designation | markdownify}}<br>{{.Params.affiliation | markdownify}}</p>
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+
+
+        <div class="tab-pane fade" id="staff" role="tabpanel" aria-labelledby="staff-tab">
+          {{ range (where .Site.RegularPages "Section" "people") }}
+          {{ if eq .Params.filter "staff" }}
+          <div class="people mt-5">
+            <div>
+              <a href="{{.Permalink}}" class="people-img"><img class="people-img" src="{{ .Params.image }}" alt="{{.Title}}"></a>
+
+            </div>
+            <div>
+            <h4 class="mb-2"><a href="{{.Permalink}}" class="link-title">{{.Title}}</a></h4>
+            <p>{{.Params.designation | markdownify}}<br>{{.Params.affiliation | markdownify}}</p>
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+
+
+	<div class="tab-pane fade" id="collab" role="tabpanel" aria-labelledby="collab-tab">
+          {{ range (where .Site.RegularPages "Section" "people") }}
+          {{ if eq .Params.filter "collaborator" }}
+          <div class="people mt-5">
+            <div>
+              <a href="{{.Permalink}}" class="people-img"><img class="people-img" src="{{ .Params.image }}" alt="{{.Title}}"></a>
+
+            </div>
+            <div>
+            <h4 class="mb-2"><a href="{{.Permalink}}" class="link-title">{{.Title}}</a></h4>
+            <p>{{.Params.designation | markdownify}}<br>{{.Params.affiliation | markdownify}}</p>
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+        </div>
+
+      </div>
+
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,96 @@
+{{ define "main" }}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HW4VEP0VKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HW4VEP0VKF');
+</script>
+
+<style>
+
+  .header
+  {
+    display:flex;
+    justify-content:center;
+    text-align:center;
+  }
+  
+    .center-vertical {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  @media only screen and (min-width:200px) and (max-width:692px)
+  {
+
+    .content-col{
+      display:flex;
+      text-align:center;
+      margin-bottom: 10%;
+
+    }
+
+  }
+  @media only screen and (min-width:700px)
+  {
+  .content-col
+  {
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+  }
+  .caption
+  {
+    margin-left:30%;
+    margin-top:2.5%;
+  }
+}
+  .img-box
+  {
+    margin-top:5%;
+    margin-bottom:-5%;
+  }
+
+  </style>
+
+
+<section class="section">
+  <div class="header">
+    <h1 style="font-weight: 700 !important;">Advisory Activities</h1>
+  </div>
+</section>
+
+{{ $index := 1 }}
+{{ $sections := where .Site.RegularPages "Type" "advisory" }}
+{{ $totalSections := len $sections }}
+{{ range $sections }}
+<section class="section" style="background-color: {{ if eq (mod $index 2) 1 }}#f4f4f4{{ else }}white{{ end }}; padding:0px; padding-bottom:2%;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center mb-5 mb-md-0 d-flex flex-column align-items-center justify-content-center">
+          <div class="img-box">
+          <a href="{{ .Permalink }}"><img class="mb-40" style="width: 60%; height: 60%;" src="{{ .Params.image | absURL }}" alt=""></a>
+          </div>
+          <div class="block mt-3">
+              <h2 class="font-weight-bold mb-4 font-size-40">{{ .Params.subsubtitle }}</h2>
+            <div class="content">
+              <h3 class="content">{{ .Params.subtitle | markdownify }}</h3>
+              <h4 class="content"> {{ .Params.title | markdownify }}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 align-self-center text-center text-md-left content-col">
+          <br>
+          <div class="caption">
+            <p>{{.Params.caption}}</p>
+            <h5 style="font-weight:bold;"><a href="{{.Params.link}}">Read More</a></h5>
+          </div>
+      </div>
+    </div>
+  </section>
+  {{ $index = add $index 1 }}
+{{ end }}
+{{end}}

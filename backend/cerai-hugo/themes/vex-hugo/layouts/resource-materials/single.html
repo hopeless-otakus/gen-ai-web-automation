@@ -1,0 +1,37 @@
+{{ define "main" }}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HW4VEP0VKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HW4VEP0VKF');
+</script>
+
+<style>
+    .breadcrumb
+    {
+      padding: .6rem 1.2rem;
+  line-height: 2.1rem;
+  font-size: 1.2rem;
+  color: #000;
+    }
+  </style>
+  
+
+  <section class="section">
+    <div class="container">
+        <div class="col-md-12 mb-4 mb-md-0">
+            <div class="resource-div" style=" text-align:center; justify-content: center;">
+            <h1>{{ .Title }}</h1>
+            <br>
+            <p>{{ .Params.caption}}</p>
+            <br>
+            <div class="content mb-4" style="text-align: justify;">{{ .Content }}</div>
+          </div>
+        </div>
+    </div>
+</section>
+{{end}}

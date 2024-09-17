@@ -1,0 +1,37 @@
+{{ define "main" }}
+
+<style>
+  .link-button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1.2rem;
+  color: #000;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in;
+  background-color: #4eadec;
+  text-align: center;
+  margin-bottom: 5%;
+  display: inline-block;
+  width:40%;
+}
+
+</style>
+
+<section class="section" style="position:relative; z-index:0;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 mb-4 mb-md-0">
+        <img src="{{ .Params.image }}" width="100%">
+      </div>
+      <div class="col-lg-6 col-md-7 offset-lg-1">
+        <h1 class="mb-4">{{ .Title }}</h1>
+        <h4 class="mb-4">{{ .Params.designation }}</h4>
+        <div class="content mb-4">{{.Content}}</div>
+        <a href="{{ .Params.weblink }}" target="_blank"><h3 class="link-button" style="font-weight:bold;">Personal page</h3></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

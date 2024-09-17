@@ -1,0 +1,306 @@
+$color-font-primary: #2d9f7a;
+$color-font-primary-dark: #316856;
+
+$color-timeline: #3F51B5;
+$color-timeline-dark: #303F9F;
+$color-timeline-light: #C5CAE9;
+$color-timeline-accent: #FF4081;
+
+$color-timeline-1: #4eadec;
+$color-timeline-1-dark: #2087e7;
+$color-timeline-2: #68d6c4;
+$color-timeline-2-dark: #40cbb4;
+$color-timeline-3: #634bc6;
+$color-timeline-3-dark: #4c35a9;
+$color-timeline-4: #eb557d;
+$color-timeline-4-dark:  #e6275a;
+
+.timeline {
+  position: relative;
+
+  &-block {
+    position: relative;
+    margin-bottom: 3rem;
+    width: 100%;
+
+    &:after {
+      display: table;
+      clear: both;
+      content: '';
+    }
+
+    .inner-box {
+      position: relative !important;
+      float: right;
+      width: 50%;
+      text-align: left;
+
+      .inner {
+        position: relative !important;
+        padding: 2rem 3rem 2rem;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 3rem rgba(#000, 0.12);
+        margin-left: 8rem;
+        border-radius: 2rem;
+
+        @include respond(tab-land) {
+          margin-left: 14rem;
+        }
+
+        &:before {
+          position: absolute;
+          top: 0;
+          bottom: -3rem;
+          right: 100%;
+          border-left: 2px dashed #ccc;
+          content: '';
+          margin-right: 8rem;
+
+          @include respond(tab-land) {
+            display: none;
+          }
+        }
+
+        &:after {
+          position: absolute;
+          right: 100%;
+          top: 3.5rem;
+          border-top: 1.5rem solid transparent;
+          border-right: 2rem solid $color-font-primary-dark;
+          border-bottom: 1.5rem solid transparent;
+          content: '';
+        }
+      }
+    }
+
+    .date {
+      position: absolute;
+      left: -13rem;
+      width: 10rem;
+      top: 0px;
+      height: 10rem;
+      background-color: #fff;
+      text-align: center;
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+      color: $color-font-primary-dark;
+      font-weight: 500;
+      padding: 3rem 1.5rem 0;
+      border-radius: 50%;
+      border: 2px dashed #222;
+      box-shadow: 0 0 3rem rgba(#000, 0.05);
+    }
+
+    .speaker-info {
+      position: relative;
+      padding-left: 8rem;
+      padding-top: 1rem;
+      min-height: 6rem;
+
+      .thumb {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 6rem;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .name {
+        font-size: 16px;
+        color: $color-font-primary;
+        font-weight: 500;
+        line-height: 1.2em;
+      }
+
+      .designation {
+        font-size: 1.3rem;
+      }
+    }
+
+    h4 {
+      position: relative;
+      font-size: 1.3rem;
+      line-height: 1.5rem;
+      color: $color-font-primary;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      padding-top: 1rem;
+      a {
+        color: $color-font-primary-dark;
+        display: inline-block;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        &:hover {
+          color: $color-font-primary;
+        }
+      }
+    }
+    .text {
+      position: relative;
+      font-size: 1rem;
+      line-height: 1.6rem;
+      color: $color-font-primary;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    .icon {
+      // text-align: right;
+      margin: 0.5rem 0 1rem 0;
+      i {
+        font-size: 1.2rem;
+        vertical-align: middle;
+      }
+      span {
+        padding-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+    .btn-box {
+      position: relative;
+      padding: 0.6rem 0;
+      a {
+        padding: 0.6rem 1.2rem;
+        line-height: 2.1rem;
+        font-size: 1.2rem;
+        color: #000;
+        border: 2px solid transparent;
+        border-radius: 0.5rem;
+        text-decoration: none;
+        transition: all 0.3s ease-in;
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+    &:nth-child(even) {
+      .inner-box {
+        float: left;
+        text-align: right;
+        .inner {
+          margin-left: 0;
+          margin-right: 8rem;
+          @include respond(tab-land) {
+            margin-right: 14rem;
+          }
+          &:before {
+            right: auto;
+            left: 100%;
+            margin-left: 8rem;
+            margin-right: 0;
+          }
+          &:after {
+            right: auto;
+            left: 100%;
+            border-right: 0;
+            border-left: 2rem solid $color-font-primary;
+          }
+        }
+      }
+      .date {
+        left: auto;
+        right: -13rem;
+      }
+      .speaker-info {
+        padding-left: 0;
+        padding-right: 8rem;
+        .thumb {
+          left: auto;
+          right: 0;
+        }
+      }
+    }
+    &:last-child .inner:before {
+      display: none;
+    }
+    &--color1 {
+      .inner-box {
+        .date,
+        .inner:before {
+          border-color: $color-timeline-1;
+        }
+      }
+      .btn-box a {
+        background-color: $color-timeline-1;
+        &:hover {
+          color: $color-timeline-1;
+          background: none;
+          border-color: $color-timeline-1;
+        }
+      }
+      .icon i {
+        color: $color-timeline-1;
+      }
+      h4 a:hover {
+        color: $color-timeline-1;
+      }
+    }
+    &--color2 {
+      .inner-box {
+        .date,
+        .inner:before {
+          border-color: $color-timeline-2;
+        }
+      }
+      .btn-box a {
+        background-color: $color-timeline-2;
+        &:hover {
+          color: $color-timeline-2;
+          background: none;
+          border-color: $color-timeline-2;
+        }
+      }
+      .icon i {
+        color: $color-timeline-2;
+      }
+      h4 a:hover {
+        color: $color-timeline-2;
+      }
+    }
+    &--color3 {
+      .inner-box {
+        .date,
+        .inner:before {
+          border-color: $color-timeline-3;
+        }
+      }
+      .btn-box a {
+        background-color: $color-timeline-3;
+        &:hover {
+          color: $color-timeline-3;
+          background: none;
+          border-color: $color-timeline-3;
+        }
+      }
+      .icon i {
+        color: $color-timeline-3;
+      }
+      h4 a:hover {
+        color: $color-timeline-3;
+      }
+    }
+    &--color4 {
+      .inner-box {
+        .date,
+        .inner:before {
+          border-color: $color-timeline-4;
+        }
+      }
+      .btn-box a {
+        background-color: $color-timeline-4;
+        &:hover {
+          color: $color-timeline-4;
+          background: none;
+          border-color: $color-timeline-4;
+        }
+      }
+      .icon i {
+        color: $color-timeline-4;
+      }
+      h4 a:hover {
+        color: $color-timeline-4;
+      }
+    }
+  }
+}

@@ -1,0 +1,206 @@
+################################### Default Configuration ############################
+baseurl = "/"
+title = "Centre for Responsible AI"
+theme = "vex-hugo"
+# post excert
+summarylength = "20"
+# google analytics
+googleAnalytics = "" # Ex: UA-123-45
+# disable language
+disableLanguages = ["fr"] # disable language from here
+
+# unsafe html
+[markup.goldmark.renderer]
+unsafe = true
+
+#################################### Plugins ##########################################
+
+# CSS Plugins
+[[params.plugins.css]]
+link = "https://fonts.googleapis.com/css?family=Droid+Serif:400|Josefin+Sans:300,400,600,700"
+[[params.plugins.css]]
+link = "plugins/bootstrap/bootstrap.min.css"
+[[params.plugins.css]]
+link = "plugins/themefisher-font/themefisher-font.min.css"
+[[params.plugins.css]]
+link = "plugins/slick/slick.min.css"
+[[params.plugins.css]]
+link = "https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.css"
+[[params.plugins.css]]
+link = "plugins/pushin/pushin.min.css"
+
+# JS Plugins
+[[params.plugins.js]]
+link = "plugins/jquery/jquery.js"
+[[params.plugins.js]]
+link = "plugins/bootstrap/bootstrap.min.js"
+[[params.plugins.js]]
+link = "plugins/slick/slick.min.js"
+[[params.plugins.js]]
+link = "https://cdn.snipcart.com/themes/v3.0.27/default/snipcart.js"
+[[params.plugins.js]]
+link = "plugins/pushin/pushin.min.js"
+
+
+###################################### Navigation ######################################
+
+[[menu.main]]
+name = "People"
+url = "people/"
+weight = 4
+
+[[menu.main]]
+name = "Activities"
+url = "#"
+weight = 1
+hasChildren = "true"
+
+[[menu.main]]
+name = "Resources"
+url = "resource-materials/"
+parent = "Activities"
+weight = 4
+
+[[menu.main]]
+name = "Advisory"
+url = "advisory/"
+parent = "Activities"
+weight = 5
+
+[[menu.main]]
+name = "Blogs"
+url = "https://cerai.substack.com/"
+weight = 2
+
+[[menu.main]]
+name = "Themes"
+parent = "Activities"
+url = "activities/"
+weight = 2
+
+
+[[menu.main]]
+name="Education"
+parent = "Activities"
+url = "education/"
+weight = 3
+
+[[menu.main]]
+name = "Projects"
+parent = "Activities"
+url = "projects/"
+weight = 2
+
+[[menu.main]]
+name = "News & Events"
+url = "#"
+weight = 3
+hasChildren = "true"
+
+[[menu.main]]
+name = "Events"
+parent = "News & Events"
+url = "events/"
+weight = 1
+
+[[menu.main]]
+name = "News"
+parent = "News & Events"
+url = "news/"
+weight = 2
+
+[[menu.main]]
+name = "Collaborators"
+url = "collaborators/"
+weight = 5
+
+[[menu.main]]
+name = "Careers"
+url = "careers/"
+weight = 8
+
+# footer menu
+[[menu.footer]]
+name = "Activities"
+url = "activities/"
+weight = 1
+
+[[menu.footer]]
+name = "Projects"
+url = "projects/"
+weight = 2
+
+[[menu.footer]]
+name = "People"
+url = "people/"
+weight = 6
+
+[[menu.footer]]
+name = "Collaborators"
+url = "collaborators/"
+weight = 4
+
+[[menu.footer]]
+name = "Careers"
+url = "careers/"
+weight = 5
+
+[[menu.footer]]
+name="Advisory"
+url = "advisory/"
+weight = 6
+
+
+########################### Default parameters ##########################
+[params]
+logo = "/images/wsai-iitm-cerai-logo.png"
+logo_width = "250px"
+# Meta data
+description = "Centre for Responsible AI is a virtual interdisciplinary research centre at IIT Madras. The centre envisions to be a premier research centre for both fundamental and applied research in Responsible AI with immediate impact in deploying AI systems in the Indian ecosystem."
+author = "Senthamizhan"
+social_card_image = "/images/social-logo.png"
+# currency
+currency = "$"
+# contact form action
+contact_form_action = "#" # contact form works with https://formspree.io
+
+# Preloader
+[params.preloader]
+enable = true
+preloader = "" # use .png , .svg or .gif format
+
+# Snipcart
+[params.snipcart]
+enable = true
+# snipcart public api key
+snipcart_api = "ZDgxY2ZiM2EtMWRmMi00M2ZkLWI1MDAtNzA2MDc0Y2Q1MzJlNjM3MTAzNDIwOTQ1NDA4NjM4"
+
+# Subscription
+[params.subscription]
+# mailchimp subsciption
+mailchimp_form_action = "https://gmail.us4.list-manage.com/subscribe/post?u=463ee871f45d2d93748e77cad&amp;id=a0a2c6d074" # replace this url with yours
+mailchimp_form_name = "b_463ee871f45d2d93748e77cad_a0a2c6d074"                                                           # replace this code with yours
+
+
+################################### English language #####################################
+[Languages.en]
+languageName = "En"
+languageCode = "en-us"
+contentDir = "content/english"
+weight = 1
+# copyright
+copyright = "Powered By [Themefisher](https://themefisher.com/) & [Gethugothemes](https://gethugothemes.com/)"
+
+
+################################### French language #####################################
+[Languages.fr]
+languageName = "Fr"
+languageCode = "fr-fr"
+contentDir = "content/french"
+weight = 2
+# copyright
+copyright = "Powered By [Themefisher](https://themefisher.com/) & [Gethugothemes](https://gethugothemes.com/)"
+
+################################### Taxonomies #####################################
+[taxonomies]
+    tags = "tags"

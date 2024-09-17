@@ -1,0 +1,50 @@
+############################# banner ############################
+banner:
+  enable: true
+  title: "Centre for Responsible AI"
+  content: "Centre for Responsible AI (CeRAI) is a virtual interdisciplinary research centre at [IIT Madras](https://www.iitm.ac.in/). The centre envisions to be a premier research centre for both fundamental and applied research in Responsible AI with immediate impact in deploying AI systems in the Indian ecosystem. The centre aims to pursue research in the domains of Ethical and Responsible AI and become the standard body in the country to recommend guidelines and policies to make deployable AI models/ systems more accountable, explainable and responsible."
+  image: "images/AI_brain.png"
+  button:
+    enable: false
+    label: "Browse All Products"
+    link: "products/"
+
+############################# promo ############################
+promo:
+  enable: true
+  image: "images/watch.png"
+  title: "Introducing the Wadhwani School of Data Science and AI (WSAI) at IIT Madras"
+  content:
+    "A quick overview of the exciting new school of Data Science and AI! Listen to Prof. Ravindran, our Head, and Prof. Arun Tangirala talk about the school, 
+    the department and the various centres it houses, including CeRAI. We also introduce the new academic programmes offered by this school.
+    <br><br>"
+
+#################################### Products ########################
+products:
+  enable: false
+  title: "Checkout Our All Products"
+
+################################## Subscription ###################
+subscription:
+  enable: false
+  bg_image: "images/call-to-action.jpg"
+  title: "Get Product Updates"
+  content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod"
+  placeholder: "Your Email Address Here"
+
+############################## Highlights ##########################
+activities:
+  enable: true
+  title: "Highlights"
+  activity_item:
+    - event_name: "Research Themes"
+      image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80"
+      link: "research/"
+
+    - event_name: "Key Projects"
+      image: "https://images.unsplash.com/photo-1503428593586-e225b39bddfe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+      link: "projects/"
+
+    - event_name: "Blogs"
+      image: "https://img.freepik.com/free-photo/teamwork-making-online-blog_53876-94868.jpg?t=st=1709032238~exp=1709035838~hmac=eaeccc9472faa23bda844e9433b6cfecd9b8118b18a3a95a737b8cb004843329&w=1380"
+      link: "blogs/"

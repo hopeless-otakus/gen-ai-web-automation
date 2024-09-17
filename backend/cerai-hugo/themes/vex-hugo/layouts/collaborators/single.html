@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HW4VEP0VKF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HW4VEP0VKF');
+</script>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12 mb-4 mb-md-0">
+            <center><img class="mb-40" src="{{ .Params.image }}" height="200px" />
+            <h1 class="mb-4">{{ .Title }}</h1>
+            {{ with .Params.subtitle }}
+            <h2>{{ . }}</h2><br>
+            {{ end }}
+            </center>
+            <div class="content mb-4" style="text-align: justify;">{{.Content}}</div>
+        </div>
+        </div>
+    </div>
+</section>
+
+{{ end }}
+
+
+
