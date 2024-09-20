@@ -18,12 +18,14 @@
 
 from mapping import Mapping
 from pprint import pprint
+from hug_chat import HugChat
 import textdistance
 
 class IntentBot():
 
   def __init__(self):
     self.mapping = Mapping()
+    self.hug_chat = HugChat()
 
   def get_intent(self, text):
     MAX_DISTANCE = 1
@@ -60,14 +62,19 @@ class IntentBot():
     return None
   
   def extract_field(self, text, extract_query):
-    INSTRUCTION = "Just provide the title."
+    INSTRUCTION = "Just provide the title. If not present, print null"
     query = "Query:" + text + "\n\n " + "Extract Query: " + extract_query + "\n\n " + INSTRUCTION
-    
+    result = self.hug_chat.chat(query)
+    if result == "null":
+      return None
+    return result
+
 
     
 
-query1 = ""
+query = "Create a post with the title 'Test Post asdkfhgasdf'"
+extract_query = "What is the title of the query?"
 
 intent_bot = IntentBot()
-result = intent_bot.get_intent(query1)
+result = intent_bot.extract_field(query, extract_query)
 print(result)

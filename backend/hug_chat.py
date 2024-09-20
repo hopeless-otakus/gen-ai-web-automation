@@ -17,7 +17,3 @@ class HugChat:
   def chat(self, query):
     result = self.chatbot.chat(query)
     return result
-  
-chatbot = HugChat()
-result = chatbot.chat("Hi!")
-print(result)
