@@ -2,7 +2,8 @@ import os
 
 MAPPING = {
     "news": {
-        "intent": ["Can you add a news?", "Can you add a news with title"],
+        "intents": ["Can you add a news?", "Can you add a news with title"],
+        "help_intent": ["Can you help me add a news?", "Can you help me add a news with title"],
         "path": "cerai-hugo/content/english/news",
         "fields": [
             {
@@ -65,6 +66,7 @@ MAPPING = {
     },
     "event": {
         "intents": ["Can you add an event?", "Can you add an event with title"],
+        "help_intent": ["Can you help me add an event?", "Can you help me add an event with title"],
         "path": "cerai-hugo/content/english/events",
         "fields": [
             {
@@ -119,6 +121,7 @@ MAPPING = {
     },
     "education": {
         "intents": ["Can you add an education?", "Can you add an education with title"],
+        "help_intent": ["Can you help me add an education?", "Can you help me add an education with title"],
         "path": "cerai-hugo/content/english/education",
         "fields": [
             {
@@ -165,6 +168,7 @@ MAPPING = {
     },
     "collaborators": {
         "intents": ["Can you add a collaborator?", "Can you add a collaborator with title"],
+        "help_intent": ["Can you help me add a collaborator?", "Can you help me add a collaborator with title"],
         "path": "cerai-hugo/content/english/collaborators",
         "fields": [
             {
@@ -227,6 +231,7 @@ MAPPING = {
     },
     "careers": {
         "intents": ["Can you add a career?", "Can you add a career with title"],
+        "help_intent": ["Can you help me add a career?", "Can you help me add a career with title"],
         "path": "cerai-hugo/content/english/careers",
         "fields": [
             {
@@ -273,6 +278,7 @@ MAPPING = {
     },
     "announcements": {
         "intents": ["Can you add an announcement?", "Can you add an announcement with title"],
+        "help_intent": ["Can you help me add an announcement?", "Can you help me add an announcement with title"],
         "path": "cerai-hugo/content/english/announcements",
         "fields": [
             {
@@ -327,6 +333,7 @@ MAPPING = {
     },
     "advisory": {
         "intents": ["Can you add an advisory?", "Can you add an advisory with title"],
+        "help_intent": ["Can you help me add an advisory?", "Can you help me add an advisory with title"],
         "path": "cerai-hugo/content/english/advisory",
         "fields": [
             {
@@ -405,6 +412,7 @@ MAPPING = {
     },
     "activities": {
         "intents": ["Can you add an activity?", "Can you add an activity with title"],
+        "help_intent": ["Can you help me add an activity?", "Can you help me add an activity with title"],
         "path": "cerai-hugo/content/english/activities",
         "fields": [
             {
@@ -467,7 +475,7 @@ class Mapping:
         return [key for key in MAPPING.keys()]
     
     def get_category_intent(self, category):
-        return MAPPING[category]["intent"]
+        return MAPPING[category]["intents"]
     
     def get_category_fields(self, category):
         fields = MAPPING[category]["fields"]
@@ -490,7 +498,3 @@ class Mapping:
     def is_field_generatable(self, category, field_name):
         field = [field for field in MAPPING[category]["fields"] if field["name"] == field_name]
         return field[0]["specs"]["generate"]
-        
-
-mapping = Mapping()
-print(mapping.is_field_required("news", "title"))
