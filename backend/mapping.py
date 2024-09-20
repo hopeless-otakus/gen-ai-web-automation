@@ -494,6 +494,9 @@ class Mapping:
         field = [field for field in MAPPING[category]["fields"] if field["name"] == field_name]
         return field[0]["extract"]
     
+    def get_category_path(self, category):
+        return MAPPING[category]["path"]
+    
     def is_field_required(self, category, field_name):
         field = [field for field in MAPPING[category]["fields"] if field["name"] == field_name]
         return field[0]["specs"]["required"]
