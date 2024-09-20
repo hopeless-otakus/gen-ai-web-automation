@@ -129,10 +129,10 @@ class IntentBot():
 
     
 
-# query = "Create a event with title 'Test Event', date '2021-09-01', time '12:00:00', image 'test.jpg', tags ['test'], publisher 'test', link 'test'"
-query = "help event"
+# # query = "Create a event with title 'Test Event', date '2021-09-01', time '12:00:00', image 'test.jpg', tags ['test'], publisher 'test', link 'test'"
+# query = "help event"
 
-intent_bot = IntentBot()
-result = intent_bot.parse_query(query)
-# print(intent_bot.print_help("event"))
-print(result)
+# intent_bot = IntentBot()
+# result = intent_bot.parse_query(query)
+# # print(intent_bot.print_help("event"))
+# print(result)
