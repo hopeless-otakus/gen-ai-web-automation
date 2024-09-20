@@ -477,6 +477,9 @@ class Mapping:
     def get_category_intent(self, category):
         return MAPPING[category]["intents"]
     
+    def get_category_help_intent(self, category):
+        return MAPPING[category]["help_intent"]
+    
     def get_category_fields(self, category):
         fields = MAPPING[category]["fields"]
         field_names = [field["name"] for field in fields]
