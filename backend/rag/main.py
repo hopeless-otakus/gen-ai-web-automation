@@ -3,14 +3,24 @@ import uuid
 import chromadb
 from sentence_transformers import SentenceTransformer
 
-# Initialize Chroma client and SentenceTransformer model
-client = chromadb.Client()
+# Use a clear path in the backend directory
+CHROMA_DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'db', 'chroma'))
+os.makedirs(CHROMA_DB_PATH, exist_ok=True)
+print(f"Storing ChromaDB at: {CHROMA_DB_PATH}")
+
+# Use PersistentClient instead of Client
+client = chromadb.PersistentClient(path=CHROMA_DB_PATH)
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Define the root directory for English content
 root_directory = r"C:\Users\Paurush Kumar\Desktop\gen-ai-web-automation\backend\cerai-hugo\content\english"
 
-# Create a Chroma collection
+# Clear existing collection if it exists
+for collection in client.list_collections():
+    if collection.name == "hugo_content":
+        client.delete_collection("hugo_content")
+
+# Create new collection
 collection = client.create_collection("hugo_content")
 
 # Function to process and store markdown files
@@ -47,20 +57,20 @@ def process_markdown_files():
 # Run the processing function
 process_markdown_files()
 
-# Example query to retrieve documents
-# Example query to retrieve documents
-query = "AI seminar event details"
-query_embedding = model.encode(query)
+# Add verification after processing
+print("\nVerifying database contents:")
+print(f"Collection name: {collection.name}")
+print(f"Collections available: {client.list_collections()}")
 
-# Retrieve relevant documents from Chroma
-results = collection.query(query_embeddings=[query_embedding.tolist()], n_results=3)
+# Get all items from collection
+all_results = collection.get()
+print(f"\nTotal documents in collection: {len(all_results['ids'])}")
+if len(all_results['ids']) > 0:
+    print("\nSample document:")
+    print(f"ID: {all_results['ids'][0]}")
+    print(f"Metadata: {all_results['metadatas'][0]}")
 
-# Iterate through the nested list of metadata
-for metadata_list in results['metadatas']:
-    for result in metadata_list:  # Each `metadata_list` contains individual metadata dictionaries
-        print(f"Tag: {result['tag']}")
-        print(f"Content: {result['file'][:200]}...")
-
-
-import pprint
-pprint.pprint(results['metadatas'])
+# After processing, verify the files were created
+print("\nVerifying ChromaDB files:")
+for item in os.listdir(CHROMA_DB_PATH):
+    print(f"- {item}")

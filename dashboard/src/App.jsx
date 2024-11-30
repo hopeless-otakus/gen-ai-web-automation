@@ -1,9 +1,11 @@
 import Form from './form'
+import SplitView from './Splitview'
 
 function App() {
 
   return (
-    <Form />
+    // <Form />
+    <SplitView />
   )
 }
 
