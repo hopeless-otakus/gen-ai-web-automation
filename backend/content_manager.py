@@ -23,6 +23,8 @@ class ContentManager:
     with open(category_path, 'a') as file:
       file.write(content)
     return True
+
+  # def check_article(self, category, file_name):
       
     
 

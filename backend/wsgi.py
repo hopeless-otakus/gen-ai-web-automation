@@ -52,7 +52,7 @@ def chatbot():
         for result in metadata_list:
             response_data.append({
                 "tag": result['tag'],
-                "content": result['file'][:200]
+                "content": result['file']
             })
     
     print(f"Sending response: {response_data}")  # Debug print
