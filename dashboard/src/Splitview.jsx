@@ -12,8 +12,8 @@ const SplitView = () => {
         prompt: message,
       });
       setResponse(result.data.message);
-      console.log(result.data.message);  // Log the response for debugging
-      
+      console.log(result.data.message); 
+      setMessage("");
     } catch (error) {
       console.error("Error sending prompt:", error);
     }
