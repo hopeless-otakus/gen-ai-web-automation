@@ -1,8 +1,10 @@
 from mapping import Mapping
 import argparse
 import json
+from content_manager import ContentManager
 
 map = Mapping()
+manager = ContentManager()
 
 fields = map.get_unique_fields()
 
@@ -17,11 +19,15 @@ if __name__ == "__main__":
     args = parser.parse_args()
     category = args.category
     fields = map.get_category_fields(category)
+    
+    if "draft" in fields:
+        fields.remove("draft")
 
     data = {}
     for field in fields:
         data[field] = getattr(args, field)
-    
-    print("Category:", category)
-    print("Data:", json.dumps(data, indent=4))
 
+    data["draft"] = False
+    
+    file_name = data["title"].lower().replace(" ", "_")
+    manager.create_article(category, file_name, data)

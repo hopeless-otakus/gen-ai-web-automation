@@ -8,7 +8,6 @@ class ContentManager:
   def create_article(self, category, file_name, data):
     fields = self.mapping.get_category_fields(category)
     category_path = self.mapping.get_category_path(category) + "/" + file_name + ".md"
-    print(fields)
     for field in fields:
       if field not in data:
         return False
