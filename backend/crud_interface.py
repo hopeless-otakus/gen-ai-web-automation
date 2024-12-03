@@ -29,5 +29,5 @@ if __name__ == "__main__":
 
     data["draft"] = False
     
-    file_name = data["title"].lower().replace(" ", "_")
+    file_name = data["title"].lower().replace(" ", "-")
     manager.create_article(category, file_name, data)

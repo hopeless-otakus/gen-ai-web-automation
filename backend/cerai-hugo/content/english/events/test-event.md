@@ -1,8 +1,14 @@
 ---
-title: test event
-date: null
-venue: null
-image: null
-link: null
-draft: null
+title: Test Event
+date: 21/21/21
+venue: something
+image: asd.png
+link: something
+---
+---
+title: Test Event
+date: 21/21/21
+venue: something
+image: asd.png
+link: something
 ---

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const SplitView = () => {
   const [message, setMessage] = useState("");
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState([]);
 
   // Function to send a prompt to the other app
   const sendPrompt = async () => {
@@ -11,8 +11,14 @@ const SplitView = () => {
       const result = await axios.post("http://127.0.0.1:5000/chatbot", {
         prompt: message,
       });
-      setResponse(result.data.message);
-      console.log(result.data.message); 
+      setResponse([
+        ...response,
+        {
+          user: message,
+          bot: result.data.message,
+        },
+      ]);
+      console.log(result.data.message);
       setMessage("");
     } catch (error) {
       console.error("Error sending prompt:", error);
@@ -38,12 +44,23 @@ const SplitView = () => {
           Chatbot
         </h1>
         <div className="flex-1 overflow-y-auto p-4 border border-gray-300 rounded-lg bg-gray-50">
-          {response && response.map((res, index) => (
-            <div key={index} className="mt-4 p-3 border border-gray-200 rounded-lg bg-white shadow-sm">
-              <p className="text-gray-600">Tag: {res.tag}</p>
-              <p className="font-bold text-gray-800">Content: {res.content}</p>
-            </div>
-          ))}
+          {response &&
+            response.map((res, index) => (
+              <>
+                <div
+                  key={index}
+                  className="mt-4 p-3 border border-gray-200 rounded-lg bg-blue-100 shadow-sm"
+                >
+                  {res.user}
+                </div>
+                <div
+                  key={index}
+                  className="mt-4 p-3 border border-gray-200 rounded-lg bg-white shadow-sm"
+                >
+                  {res.bot}
+                </div>
+              </>
+            ))}
         </div>
         <div className="flex items-center p-2 border-t border-gray-300">
           <textarea
