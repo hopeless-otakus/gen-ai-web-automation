@@ -1,36 +1,27 @@
+from mapping import Mapping
 import argparse
-import os
-from datetime import datetime
+import json
 
-TAG_MAPPING = {
-    "news": ["title", "date", "publisher", "draft", "description"],
-    "event": ["title", "date", "venue", "image", "link", "draft"],
-    "education": ["title", "date", "image", "link", "draft"],
-    "collaborators": ["title", "subtitle", "filter", "date", "image", "draft", "description"],
-    "careers": ["title", "image", "link", "draft", "weight"]
-}
+map = Mapping()
 
-def create_markdown_file(tag, field_values):
-    os.makedirs(f"content/{tag}", exist_ok=True)
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"content/{tag}/{timestamp}.md"
-    
-    content = f"# {tag.capitalize()}\n\n"
-    for field, value in field_values.items():
-        content += f"## {field.capitalize()}\n{value}\n\n"
-    
-    with open(filename, 'w') as f:
-        f.write(content)
-    
-    print(f"Created markdown file: {filename}")
-
-def main():
-    parser = argparse.ArgumentParser(description='Create markdown file for specific tag')
-    parser.add_argument('tag', choices=TAG_MAPPING.keys(), help='Tag name for the content')
-    
-    args = parser.parse_args()
-    field_values = {field: input(f"Enter {field}: ") for field in TAG_MAPPING[args.tag]}
-    create_markdown_file(args.tag, field_values)
+fields = map.get_unique_fields()
 
 if __name__ == "__main__":
-    main()
+
+    parser = argparse.ArgumentParser(description="Generate a JSON file with the unique fields in the mapping.")
+    
+    parser.add_argument("category", type=str, help="The category to get unique fields for")
+    for field in fields:
+        parser.add_argument(f"--{field}", type=str, help=f"Value for {field}")    
+    
+    args = parser.parse_args()
+    category = args.category
+    fields = map.get_category_fields(category)
+
+    data = {}
+    for field in fields:
+        data[field] = getattr(args, field)
+    
+    print("Category:", category)
+    print("Data:", json.dumps(data, indent=4))
+
