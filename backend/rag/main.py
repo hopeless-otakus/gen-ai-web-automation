@@ -13,7 +13,7 @@ client = chromadb.PersistentClient(path=CHROMA_DB_PATH)
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 # Define the root directory for English content
-root_directory = r"C:\Users\Dusk Light\Desktop\Projects\Active\gen-ai-web-automation\backend\cerai-hugo\content\english"
+root_directory = r"C:\Users\Paurush Kumar\Desktop\gen-ai-web-automation\backend\cerai-hugo\content\english"
 
 # Clear existing collection if it exists
 for collection in client.list_collections():
