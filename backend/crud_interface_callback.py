@@ -21,7 +21,7 @@ def get_crud_interface_callback(prompt):
     instruction += "CONTEXT: \n" + context + "\n"
 
     instruction += "Please extract the required fields from the prompt and provide the values for each field. in the following format: python crud_interface.py <category> --<field1> <value1> --<field2> <value2> ... \n\nJust give the code and nothing else without language name."
-    final_prompt = "PROMPT: \n" + event_prompt + "\nINSTRUCTION:\n" + instruction
+    final_prompt = "PROMPT: \n" + prompt + "\nINSTRUCTION:\n" + instruction
 
     callback = chatbot.chat(final_prompt)
     return callback
